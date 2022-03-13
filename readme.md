@@ -1,7 +1,7 @@
-#backend is taufu
+# backend is taufu
 
 
-##Eating pinapple pizza is taufaa
+## Eating pinapple pizza is taufaa
 
 ![Kawaii Shimai](/src/image.jpg)
 
