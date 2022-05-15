@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import kg.kuraido.tacocloud.Ingredient.Type;
 import kg.kuraido.tacocloud.Ingredient;
@@ -27,20 +28,36 @@ public class DesignWaifuController {
     @GetMapping
     public String showDesignForm(Model model) {
         List<Ingredient> waifus = Arrays.asList(
-                new Ingredient("Yandere", "Tomoe", Type.ACUP),
-                new Ingredient("Tsundere", "Hanako", Type.DCUP),
-                new Ingredient("Deredere", "Yuri", Type.DCUP)
+                new Ingredient("CUP1", "A CUP", Type.CUP),
+                new Ingredient("CUP2", "Hanako", Type.CUP),
+                new Ingredient("SaizuWan1", "90", Type.firstSize),
+                new Ingredient("SaizuWan2", "80", Type.firstSize),
+                new Ingredient("SaizuTsu1", "60", Type.secondSize),
+                new Ingredient("SaizuTsu2", "55", Type.secondSize),
+                new Ingredient("SaizuSuri1", "90", Type.thirdSize),
+                new Ingredient("SaizuSuri2", "75", Type.thirdSize),
+                new Ingredient("Taipu1", "Tsundere", Type.Type),
+                new Ingredient("Taipu2", "Yandere", Type.Type)
         );
 
-        Type[] types = Ingredient.Type.values();
+        Type[] types = Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
+                    filterByType(waifus, type));
         }
 
         model.addAttribute("design", new Waifu());
         return "design";
     }
+
+    private List<Ingredient> filterByType(
+            List<Ingredient> ingredients, Type type) {
+        return ingredients
+                .stream()
+                .filter(x -> x.getType().equals(type))
+                .collect(Collectors.toList());
+    }
+
 
 
 }

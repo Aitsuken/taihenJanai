@@ -8,16 +8,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Ingredient {
 
-    private String kind;
+    private String id;
     private String name;
     private Type type;
 
     public Ingredient(String kind, String name, Type type){
-        this.kind = kind;
+        this.id = id;
         this.name = name;
         this.type = type;
     }
     public static enum Type{
-        ACUP, BCUP, CCUP, DCUP, ECUP, FCUP, GCUP
+        CUP, firstSize, secondSize, thirdSize, Type
     }
 }

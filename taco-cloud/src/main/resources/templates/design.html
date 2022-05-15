@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Waifu Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+
+</head>
+<body>
+
+<h1>Design your taco!</h1>
+<img th:src="@{/images/TacoCloud.png}"/>
+
+<form method="POST" th:object="${design}">
+
+    <div class="grid">
+
+        <div class="ingredient-group" id="wraps"><h3>Designate your wrap:</h3>
+            <div th:each="ingredient : ${CUP}">
+                <input name="ingredients" type="checkbox"
+                       th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="proteins">
+            <h3>Pick your protein:</h3>
+            <div th:each="ingredient : ${firstSize}">
+
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="SaizuTsu">
+            <h3>Choose your cheese:</h3>
+            <div th:each="ingredient : ${secondSize}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="SaizuSuri">
+            <h3>Determine your veggies:</h3>
+            <div th:each="ingredient : ${thirdSize}">
+
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="Taipu">
+            <h3>Select your sauce:</h3>
+            <div th:each="ingredient : ${Type}">
+                <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <h3>Name your waifu creation:</h3>
+        <input type="text" th:field="*{name}"/><br/>
+        <button>Submit your waifu</button>
+    </div>
+</form>
+</body>
+</html>
